@@ -13,7 +13,7 @@
     </head>
     <body>
         <nav>
-            <h2 class="title">WatchTime</h2>
+            <a href="/"><h2 class="title">WatchTime</h2></a>
             <div class="searchBar">
                 <form method="POST" action="/search">
                     <input type="text" placeholder='&#xf002  Search movie or a show then press enter'> 
@@ -22,13 +22,16 @@
         </nav>
 
         <main class="main">
-            <h1 class="category-title">{{ category }}</h1>
+            <h1 class="category-title">{{ category | title }}</h1>
 
+            
             <div class="container-grid">
                 {% for obj in data%}
+                <a href="/" class="card-ref">
                     <div class="card">
-
+                        <img src={{obj.image.medium}} >
                     </div>
+                </a>
                 {% endfor %}
             </div>
         </main>
