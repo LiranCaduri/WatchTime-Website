@@ -52,3 +52,27 @@ nav h2{
 .searchBar input::placeholder{
     color: #232323;
 }
+
+main{
+    position: relative;
+    margin: 8rem 2rem;
+    border: 1px solid white;
+}
+
+
+.category-title{
+    color: white;
+}
+
+.container-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.card{
+    background-color: #656565;
+    width: 100px;
+    height: 100px;
+
+}
