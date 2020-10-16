@@ -41,10 +41,10 @@ nav h2{
     background-color: #444444;
     border: none;
     font-family: FontAwesome, Roboto, sans-serif;
-    max-width: 400px;
-    width: 325px;
+    /* max-width: 45rem; */
+    width: 40rem;
     border-radius: 5px;
-    font-size: 1.6em;
+    font-size: 1.8em;
     padding: 5px;
     
 }
