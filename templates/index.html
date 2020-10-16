@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- dev without server -->
+        <!-- dev with server -->
+        <link rel="stylesheet" href={{ url_for('static',filename="css/main.css") }} />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- <script src="https://use.fontawesome.com/ef0173c2a2.js"></script> -->
+
+        <title>{{title}}</title>
+    </head>
+    <body>
+        <nav>
+            <h2 class="title">WatchTime</h2>
+            <div class="searchBar">
+                <form method="POST" action="/search">
+                    <input type="text" placeholder='&#xf002  Search movie or a show then press enter'> 
+                </form>
+            </div>
+        </nav>
+
+    </body>
+</ht
