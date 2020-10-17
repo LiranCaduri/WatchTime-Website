@@ -78,16 +78,42 @@ main{
 
 .container-grid{
     display: grid;
-    /* grid: auto-flow dense; */
+    grid-template-columns: repeat(5, 1fr);
     gap: 20px;
 }
 
 .card{
-    background-color: #656565;
-    /* width: 100px;
-    height: 100px; */
+    background-color: #656565;   
 }
 
 /* .card-ref{
     display: block;
 } */
+
+/* // Small devices (landscape phones, 576px and up) */
+@media (max-width: 576px) { 
+    .container-grid{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+    .container-grid{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+    .container-grid{
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+    .container-grid{
+        grid-template-columns: repeat(5, 1fr);
+    }
+}

@@ -12,4 +12,5 @@ def index():
     return render_template('index.html', title="WatchTime", data= json.loads(respones.content), category="all")
     
 
-app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
