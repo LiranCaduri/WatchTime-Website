@@ -8,7 +8,7 @@ app = Flask(__name__)
 def index():
     #http://api.tvmaze.com/shows
     respones = requests.get('http://api.tvmaze.com/shows')
-    print(len(json.loads(respones.content)))
+    # print(len(json.loads(respones.content)))
     return render_template('index.html', title="WatchTime", data= json.loads(respones.content), category="all")
     
 
