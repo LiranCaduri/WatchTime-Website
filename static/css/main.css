@@ -78,12 +78,17 @@ main{
 .container-grid{
     display: grid;
     align-items: center;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
 }
 
 .card{
     background-color: #656565;   
+    border-radius: 20px;
+}
+
+#thumbnail{
+    border-radius: 20px 0px 0px 20px;
 }
 
 .card-ref{

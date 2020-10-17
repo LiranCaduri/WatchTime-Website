@@ -20,7 +20,7 @@
             </a>
             <!-- <div class="searchBar"> -->
             <form class="searchBar" method="POST" action="/search">
-                <input type="text" placeholder='&#xf002  Search movie or a show then press enter'> 
+                <input type="text" placeholder='&#xf002  Search a show then press enter'> 
             </form>
             <!-- </div> -->
         </nav>
@@ -32,10 +32,12 @@
             
             <div class="container-grid">
                 {% for obj in data%}
-                <a href="/" class="card-ref">
-                    <img src={{obj.image.medium}} >
-                    <div class="card">text</div>
-                </a>
+                <div id="card" class="card">
+                    <a href="/" class="card-ref">
+                        <img src={{obj.image.medium}} id="thumbnail" class="thumbnail" alt="{{obj.name}}">
+                        <h1 class="show-name">{{obj.name}}</h1>
+                    </a>
+                </div>
                 {% endfor %}
             </div>
         </main>
