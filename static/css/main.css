@@ -49,12 +49,11 @@ nav a{
     background-color: #505050;
     border: none;
     font-family: FontAwesome, Roboto, sans-serif;
-    /* max-width: 45rem; */
-    width: 40rem;
+    width: 100%;
     border-radius: 5px;
     font-size: 1.8em;
     padding: 5px;
-    
+    flex: 1;
 }
 
 .searchBar input::placeholder{

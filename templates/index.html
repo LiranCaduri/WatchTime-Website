@@ -3,8 +3,9 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <!-- dev without server -->
-        <!-- dev with server -->
+
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
         <link rel="stylesheet" href={{ url_for('static',filename="css/main.css") }} />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <!-- <script src="https://use.fontawesome.com/ef0173c2a2.js"></script> -->
@@ -13,17 +14,21 @@
     </head>
     <body>
         <nav>
-            <a href="/"><h2 class="title">WatchTime</h2></a>
-            <div class="searchBar">
-                <form method="POST" action="/search">
-                    <input type="text" placeholder='&#xf002  Search movie or a show then press enter'> 
-                </form>
-            </div>
+            <a href="/" class="title-and-logo">    
+                <!-- <img src="{{ url_for('static', filename='favicon.ico') }}"> -->
+                <h2 class="title">WatchTime</h2>
+            </a>
+            <!-- <div class="searchBar"> -->
+            <form class="searchBar" method="POST" action="/search">
+                <input type="text" placeholder='&#xf002  Search movie or a show then press enter'> 
+            </form>
+            <!-- </div> -->
         </nav>
 
         <main class="main">
-            <h1 class="category-title">{{ category | title }}</h1>
-
+            <header>
+                <h1 class="category-title">{{ category | title }}</h1>
+            </header>
             
             <div class="container-grid">
                 {% for obj in data%}
@@ -34,6 +39,5 @@
                 {% endfor %}
             </div>
         </main>
-
     </body>
 </ht
