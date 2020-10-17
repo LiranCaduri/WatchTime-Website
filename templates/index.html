@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+        <link rel="shortcut icon" href={{ url_for('static', filename='favicon.ico') }}>
 
         <link rel="stylesheet" href={{ url_for('static',filename="css/main.css") }} />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -32,12 +32,21 @@
             
             <div class="container-grid">
                 {% for obj in data%}
-                <div id="card" class="card">
-                    <a href="/" class="card-ref">
+                    <a href="/" class="card-ref card">
                         <img src={{obj.image.medium}} id="thumbnail" class="thumbnail" alt="{{obj.name}}">
-                        <h1 class="show-name">{{obj.name}}</h1>
+                        <div class="card-data">
+                            <h1 class="show-name">{{obj.name}}</h1>
+                            <div id="stars-container" style="display: flex; flex-direction: row;">
+                                <!-- <span class="fa fa-star checked"></span> -->
+                
+                                {% set rate = obj.rating.average  %}
+                                {{rate }}
+                                {#%for i in range(0, (obj.rating.average * 5)|int) %#}
+                                    {#{i}#}
+                                {#% endfor %#}
+                            </div>
+                        </div>
                     </a>
-                </div>
                 {% endfor %}
             </div>
         </main>
