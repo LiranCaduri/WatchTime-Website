@@ -4,15 +4,26 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <link rel="stylesheet" href="Index.css" />
-        <!-- <title>Title</title> -->
+        <link rel="shortcut icon" href={{ url_for('static', filename='favicon.ico') }}>
+        <link rel="stylesheet" href={{ url_for('static',filename="css/main.css") }} />
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        {% block head %}
+        {% endblock %}
+        <title>WatchTime</title>
     </head>
     <body>
-<!-- 
-        <header>
-            <h1>>Header</h1>
-        </header> -->
+        <nav>
+            <a href="/" class="title-and-logo">    
+                <h2 class="title">WatchTime</h2>
+            </a>
+            <form class="searchBar" method="POST" action="{{ url_for('search') }}">
+                <input type="text" id="search-text" name="show" placeholder='&#xf002  Search a show then press enter ' required> 
+            </form>
+        </nav>
 
-        <!-- <script src="Index.js"></script> -->
+        {% block body %}
+
+        {% endblock %}
     </body>
-</ht
+</html>

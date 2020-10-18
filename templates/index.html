@@ -1,54 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+{% extends 'base.html' %}
 
-        <link rel="shortcut icon" href={{ url_for('static', filename='favicon.ico') }}>
 
-        <link rel="stylesheet" href={{ url_for('static',filename="css/main.css") }} />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <!-- <script src="https://use.fontawesome.com/ef0173c2a2.js"></script> -->
+{% block head %} 
+    <link rel="stylesheet" href={{ url_for('static',filename="css/main.css") }} />
+{% endblock %}
 
-        <title>{{title}}</title>
-    </head>
-    <body>
-        <nav>
-            <a href="/" class="title-and-logo">    
-                <!-- <img src="{{ url_for('static', filename='favicon.ico') }}"> -->
-                <h2 class="title">WatchTime</h2>
+
+{% block body %}
+<main class="main">
+    <header>
+        <h1 class="category-title">{{ category | title }}</h1>
+    </header>
+    
+    <div class="container-grid">
+        {% for obj in data%}
+            <a href="/" class="card-ref card">
+                <img src={{obj.image.medium}} id="thumbnail" class="thumbnail" alt="{{obj.name}}">
+                <div class="card-data">
+                    <h1 class="show-name">{{obj.name}}</h1>
+                </div>
             </a>
-            <!-- <div class="searchBar"> -->
-            <form class="searchBar" method="POST" action="/search">
-                <input type="text" placeholder='&#xf002  Search a show then press enter'> 
-            </form>
-            <!-- </div> -->
-        </nav>
+        {% endfor %}
+    </div>
+</main>
 
-        <main class="main">
-            <header>
-                <h1 class="category-title">{{ category | title }}</h1>
-            </header>
-            
-            <div class="container-grid">
-                {% for obj in data%}
-                    <a href="/" class="card-ref card">
-                        <img src={{obj.image.medium}} id="thumbnail" class="thumbnail" alt="{{obj.name}}">
-                        <div class="card-data">
-                            <h1 class="show-name">{{obj.name}}</h1>
-                            <div id="stars-container" style="display: flex; flex-direction: row;">
-                                <!-- <span class="fa fa-star checked"></span> -->
-                
-                                {% set rate = obj.rating.average  %}
-                                {{rate }}
-                                {#%for i in range(0, (obj.rating.average * 5)|int) %#}
-                                    {#{i}#}
-                                {#% endfor %#}
-                            </div>
-                        </div>
-                    </a>
-                {% endfor %}
-            </div>
-        </main>
-    </body>
-</ht
+{% endblock %}
