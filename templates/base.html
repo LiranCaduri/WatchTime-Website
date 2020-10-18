@@ -14,7 +14,7 @@
     </head>
     <body>
         <nav>
-            <a href="/" class="title-and-logo">    
+            <a href="{{ url_for('index') }}" class="title-and-logo">    
                 <h2 class="title">WatchTime</h2>
             </a>
             <form class="searchBar" method="POST" action="{{ url_for('search') }}">

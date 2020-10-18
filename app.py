@@ -2,7 +2,6 @@ from flask import Flask, render_template, request
 import requests
 import json
 
-
 # TODO - add try catch to all request
 # TODO - make 404 page design
 
@@ -21,7 +20,11 @@ def search():
         # f'http://api.tvmaze.com/search/shows?q={result}'
         response = requests.get(f'http://api.tvmaze.com/search/shows?q={result}')
         # print(json.loads(response.content))
-    return render_template('search.html', data= json.loads(response.content))
+    return render_template('search.html', data= json.loads(response.content), name=result)
+
+@app.route('/show/<string:id>') # figure that out 
+def show_page():
+    pass
 
 if __name__ == '__main__':
     app.run(debug=True)
