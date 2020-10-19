@@ -1,41 +1,4 @@
 
-.container-grid{
-    display: grid;
-    align-items: center;
-    grid-template-columns: repeat(auto-fit, minmax(390px, 1fr));
-    gap: 20px;
-    margin: auto;
-}
-
-.card{
-    display: flex;
-    flex-direction: row;
-    background-color: #656565;   
-    border-radius: 20px;
-    text-decoration: none;
-    color: white;
-    box-shadow: 10px 10px 10px #323232;
-}
-
-#thumbnail{
-    border-radius: 20px;
-    padding: 10px;
-}
-
-.card-data{
-    margin: auto;
-    text-align: center;
-    font-size: 1.1em;
-}
-
-.checked {
-    color: yellow;
-}
-
-#stars-container{
-    justify-content: center;
-}
-
 /* // Small devices (landscape phones, 576px and up)
 @media (max-width: 576px) { 
     .container-grid{
