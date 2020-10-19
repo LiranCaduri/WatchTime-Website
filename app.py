@@ -19,11 +19,12 @@ def search():
         result = request.form['show']
         # f'http://api.tvmaze.com/search/shows?q={result}'
         response = requests.get(f'http://api.tvmaze.com/search/shows?q={result}')
-        # print(json.loads(response.content))
+        
     return render_template('search.html', data= json.loads(response.content), name=result)
 
 @app.route('/show/<string:id>') # figure that out 
 def show_page():
+    # mabye try pass param in url_for on frontend with key and val
     pass
 
 if __name__ == '__main__':
