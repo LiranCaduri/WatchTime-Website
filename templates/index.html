@@ -18,11 +18,15 @@
                 <img src={{obj.image.medium}} id="thumbnail" class="thumbnail" alt="{{obj.name}}">
                 <div class="card-data">
                     <h1 class="show-name">{{obj.name}}</h1>
-                </div>
-                <div>
-                <!-- {#% for i in range( obj.rating.average // 2 ) %#}
-                    <span class="fa fa-star"></span>    
-                {#% endfor %#} -->
+                
+                    <div id="stars-container">
+                        {% for i in range( obj.rating.average |int // 2 ) %}
+                            <span class="fa fa-star checked star"></span>    
+                        {% endfor %}
+                        {% for i in range(5 - (obj.rating.average |int // 2) ) %}
+                            <span class="fa fa-star"></span>    
+                        {% endfor %}
+                    </div>
                 </div>
             </a>
         {% endfor %}

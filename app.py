@@ -13,11 +13,11 @@ def index():
     response = requests.get('http://api.tvmaze.com/shows')
     return render_template('index.html', data= json.loads(response.content), category="all")
 
+
 @app.route('/search', methods = ['POST'])
 def search():
     if request.method == 'POST':
         result = request.form['show']
-        # f'http://api.tvmaze.com/search/shows?q={result}'
         response = requests.get(f'http://api.tvmaze.com/search/shows?q={result}')
     return render_template('search.html', data= json.loads(response.content), name=result)
 
