@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <link rel="stylesheet" href={{ url_for('static',filename="css/showPage.css") }} />
+{% endblock %}
+
+{% block body %}
+    <main>
+        <div class="show-info-container">
+            <header>
+                <h1 class="category-title">{{data.name}}</h1>
+            </header>
+            <section class="info-about">
+                <img src="{{data.image.original}}" id="full-size-show-image" alt="{{data.name}}">
+                <div class="text-info">
+                    <div>
+                        <label id="genre-lable" for="genres-list">Genres</label>
+                        <ul id="genres-list" class="genres-list">
+                            {% for genre in data.genres %}
+                                <li>{{genre}}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="show-date">
+                        <label>Premiered in</label>
+                        <br>
+                        <span class="tab date">{{data.premiered | replace('-','.')}}</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+{% endblock %}

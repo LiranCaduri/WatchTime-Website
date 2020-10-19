@@ -4,6 +4,7 @@ import json
 
 # TODO - add try catch to all request
 # TODO - make 404 page design
+# TODO - fix search to match smartphones
 
 app = Flask(__name__)
 
@@ -21,10 +22,12 @@ def search():
         response = requests.get(f'http://api.tvmaze.com/search/shows?q={result}')
     return render_template('search.html', data= json.loads(response.content), name=result)
 
-@app.route('/show/<string:id>') # figure that out 
-def show_page():
-    # mabye try pass param in url_for on frontend with key and val
-    pass
+
+@app.route('/show/<int:show_id>')
+def show_page(show_id):
+    response = requests.get(f'http://api.tvmaze.com/shows/{show_id}')
+
+    return render_template('show_page.html', data= json.loads(response.content))
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,0 +1,49 @@
+html{
+    color: white;
+}
+
+.show-info-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.show-info-container header{
+    text-align: center;
+}
+
+.info-about{
+    margin: auto;
+    width: 90vw;
+    height: 75vh;
+    background-color: #656565;
+    border-radius: 2rem;
+    padding: 2rem;
+    position: relative;
+}
+
+img{
+    width: 30vh;
+    float: right;
+    border-radius: 1rem;
+}
+
+#genre-lable, label{
+    font-size: 3rem ;
+    color: goldenrod;
+}
+
+.genres-list {
+    display: flex;
+    list-style: none;
+}
+
+.genres-list li, li {
+    font-size: 2rem;
+    margin: 1rem;
+}
+
+.date{
+    font-size: 2rem;
+    padding: 5rem;
+}
+
