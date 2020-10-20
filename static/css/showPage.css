@@ -13,21 +13,21 @@ html{
 
 .info-about{
     margin: auto;
-    width: 90vw;
-    height: 75vh;
     background-color: #656565;
     border-radius: 2rem;
     padding: 2rem;
+    width: 60vw;
     position: relative;
 }
 
 img{
-    width: 30vh;
+    width: 370px;
     float: right;
     border-radius: 1rem;
+    margin-left: 20px;
 }
 
-#genre-lable, label{
+#genre-lable, dt{
     font-size: 3rem ;
     color: goldenrod;
 }
@@ -37,13 +37,31 @@ img{
     list-style: none;
 }
 
-.genres-list li, li {
+.genres-list li, dd {
     font-size: 2rem;
     margin: 1rem;
 }
 
-.date{
-    font-size: 2rem;
-    padding: 5rem;
+dd{
+    margin: 2rem 5rem;
+}
+
+#show-summary{
+    display: flex;
+    flex-direction: column;
+}
+
+.summary-title{
+    text-align: center;
+    font-size: 3em;
+    margin: 1.5rem;
+    color: goldenrod;
+}
+
+p{
+    font-size: 2em;
+    margin: 0;
+    letter-spacing: 0.5px;
+    word-spacing: 1px;
 }
 

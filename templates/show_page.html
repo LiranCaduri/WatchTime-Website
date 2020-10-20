@@ -13,20 +13,28 @@
             <section class="info-about">
                 <img src="{{data.image.original}}" id="full-size-show-image" alt="{{data.name}}">
                 <div class="text-info">
-                    <div>
-                        <label id="genre-lable" for="genres-list">Genres</label>
-                        <ul id="genres-list" class="genres-list">
-                            {% for genre in data.genres %}
-                                <li>{{genre}}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                    <div class="show-date">
-                        <label>Premiered in</label>
-                        <br>
-                        <span class="tab date">{{data.premiered | replace('-','.')}}</span>
-                    </div>
+                    <label id="genre-lable" for="genres-list">Genres</label>
+                    <ul id="genres-list" class="genres-list">
+                        {% for genre in data.genres %}
+                            <li>{{genre}}</li>
+                        {% endfor %}
+                    </ul>
+                    <dl>
+                        <dt>Premiered in</dt>
+                        <dd id="date" class="tab date">{{data.premiered | replace('-','.')}}</dd>
+                        <dt>Network</dt>
+                        <dd>{{ data.network.name }}</dd>
+                        <dt>Rating</dt>
+                        <dd>{{ data.rating.average }}</dd>
+                        <dt>Country</dt>
+                        <dd>{{ data.network.country.name }}</dd>
+                    </dl>
                 </div>
+            </section>
+            <br>
+            <section id="show-summary" class="info-about">
+                <h3 class="summary-title">Summary</h3>
+                <p id="summary">{{ data.summary | safe }}</p>
             </section>
         </div>
     </main>
