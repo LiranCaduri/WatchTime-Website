@@ -5,7 +5,7 @@ import json
 # TODO - add try catch to all request
 # TODO - make 404 page design
 # TODO - fix search to match smartphones
-# TODO - make filters by data manipulation (needed making by hand)
+# TODO - make filters by data manipulation (needed making by hand) (filters: by rating out of 10, by actress, by genre ...)
 # TODO - show text when there is no result
 # TODO - add Cast
 # TODO - use background photo for show page (http://api.tvmaze.com/shows/4/images)
