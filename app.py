@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 import requests
 import json
 
@@ -8,7 +8,31 @@ import json
 # TODO - make filters by data manipulation (needed making by hand) (filters: by rating out of 10, by actress, by genre ...)
 # TODO - show text when there is no result
 # TODO - add Cast
+# TODO - implement figur 
 
+genres_list = [
+        "Comedy",
+        "Fantasy",
+        "Crime",
+        "Drama",
+        "Music",
+        "Adventure",
+        "History",
+        "Thriller",
+        "Animation",
+        "Family",
+        "Mystery",
+        "Biography",
+        "Action",
+        "Film-Noir",
+        "Romance",
+        "Sci-Fi",
+        "War",
+        "Western",
+        "Horror",
+        "Musical",
+        "Sport"
+    ]
 
 app = Flask(__name__)
 
@@ -17,7 +41,7 @@ app = Flask(__name__)
 def index(page=0):
     #http://api.tvmaze.com/shows
     response = requests.get(f'http://api.tvmaze.com/shows?page={page}')
-    return render_template('index.html', data= json.loads(response.content), category="all")
+    return render_template('index.html', data= json.loads(response.content), category="all", genres=genres_list)
 
 
 @app.route('/search', methods = ['POST'])
@@ -48,6 +72,10 @@ def show_page(show_id):
 @app.route('/genre/<string:genre>/<int:page>')
 @app.route('/genre/<string:genre>')
 def genre_filter(genre, page=0):
+    
+    if genre.lower() == 'all':
+        return redirect(url_for('index'))
+
     response = requests.get(f'http://api.tvmaze.com/shows?page={page}')
     data = json.loads(response.content)
 
@@ -58,7 +86,7 @@ def genre_filter(genre, page=0):
             if g.lower() == genre.lower():
                 filtered.append(obj)
 
-    return render_template('index.html', data=filtered , category=genre.title())
+    return render_template('index.html', data=filtered , category=genre.title(), genres=genres_list)
 
 
 if __name__ == '__main__':

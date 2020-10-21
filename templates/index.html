@@ -10,11 +10,21 @@
 <main class="main">
     <header>
         <h1 class="category-title">{{ category | title }}</h1>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Genres List
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                {% for genre in genres %}
+                <a class="dropdown-item" href="{{ url_for('genre_filter',genre=genre) }}">{{ genre }}</a>
+                {% endfor %}
+            </div>
+        </div>
     </header>
     
     <div class="container-grid">
         {% for obj in data%}
-            <a href="{{ url_for('show_page', show_id=obj.id) }}" class="card-ref card">
+            <a id="card-ref" href="{{ url_for('show_page', show_id=obj.id) }}" class="card-ref">
                 <img src={{obj.image.medium}} id="thumbnail" class="thumbnail" alt="{{obj.name}}">
                 <div class="card-data">
                     <h1 class="show-name">{{obj.name}}</h1>

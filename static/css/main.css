@@ -3,7 +3,7 @@
 
 html {
     font-size: 10px;
-    background-color: #323232;
+    background-color: #323232 !important;
     /* color: white; */
     font-family: 'Roboto', sans-serif;
     scroll-behavior: smooth;
@@ -11,7 +11,7 @@ html {
 
 body{
     margin: 0;
-    /* background-color: #323232; */
+    background-color: #323232 !important;
 }
 
 nav{
@@ -35,9 +35,9 @@ nav h2{
     padding: 0.5rem;
 }
 
-nav a{
-    color: white;
-    text-decoration: none;
+a{
+    color: white !important;
+    text-decoration: none !important;
 }
 
 .searchBar{
@@ -86,13 +86,13 @@ main{
     margin: auto;
 }
 
-.card{
+.card, .card-ref, a [id="card-ref"]{
     display: flex;
     flex-direction: row;
     background-color: #656565;   
     border-radius: 20px;
-    text-decoration: none;
-    color: white;
+    text-decoration: none !important;
+    color: white !important;
     box-shadow: 10px 10px 10px #323232;
 }
 
@@ -137,4 +137,27 @@ footer{
     align-items: center;
     justify-content: center;
     height: 5vh;
+}
+
+header{
+    display: flex;
+    align-items: center;
+    justify-content: safe;
+}
+
+
+#dropdownMenuButton{
+    /* bootstarp override */
+    font-size: 1.5em !important;
+    background-color: #656565;
+}
+
+.dropdown-menu{
+    /* bootstarp override */
+    background-color: #424242 !important;
+    font-size: 2em !important;
+}
+
+.dropdown-item:hover{
+    background-color: #232323 !important;
 }
