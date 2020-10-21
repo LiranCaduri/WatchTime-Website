@@ -2,66 +2,29 @@ html{
     color: white;
 }
 
-.show-info-container{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
-.show-info-container header{
-    text-align: center;
+body{
+    margin: 0 auto; 
 }
 
-.info-about{
-    margin: auto;
-    background-color: #656565;
-    border-radius: 2rem;
-    padding: 2rem;
-    width: 60vw;
-    position: relative;
+main{
+    margin: 0;
 }
 
 img{
-    width: 370px;
-    float: right;
-    border-radius: 1rem;
-    margin-left: 20px;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin-bottom: 100px;
 }
 
-#genre-lable, dt{
-    font-size: 3rem ;
-    color: goldenrod;
+.container{
+    position: -webkit-sticky; 
+    position: sticky;
+    width: 70%;
+    background: linear-gradient(to bottom, goldenrod, gold);
+    opacity: 80%;
+    margin: auto;
+    top: 40rem;
+    margin-top: 40%;
 }
-
-.genres-list {
-    display: flex;
-    list-style: none;
-}
-
-.genres-list li, dd {
-    font-size: 2rem;
-    margin: 1rem;
-}
-
-dd{
-    margin: 2rem 5rem;
-}
-
-#show-summary{
-    display: flex;
-    flex-direction: column;
-}
-
-.summary-title{
-    text-align: center;
-    font-size: 3em;
-    margin: 1.5rem;
-    color: goldenrod;
-}
-
-p{
-    font-size: 2em;
-    margin: 0;
-    letter-spacing: 0.5px;
-    word-spacing: 1px;
-}
-

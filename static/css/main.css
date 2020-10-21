@@ -11,6 +11,7 @@ html {
 
 body{
     margin: 0;
+    /* background-color: #323232; */
 }
 
 nav{
@@ -43,7 +44,7 @@ nav a{
     display: flex;
     flex-direction: row;
     margin: 15px 0px;  
-    width: 30vh; 
+    width: 30vw; 
 }
 
 .searchBar input{
@@ -53,7 +54,7 @@ nav a{
     font-family: FontAwesome, Roboto, sans-serif;
     width: 100%;
     border-radius: 5px;
-    font-size: 1.8em;
+    font-size: 1.5em;
     padding: 5px;
     flex: 1;
 }
@@ -64,7 +65,7 @@ nav a{
 
 main{
     position: relative;
-    margin: 8rem 2rem;
+    margin: 8rem 2rem 5rem 2rem;
 }
 
 .category-title{
@@ -80,7 +81,7 @@ main{
 .container-grid{
     display: grid;
     align-items: center;
-    grid-template-columns: repeat(auto-fit, minmax(390px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(355px, 1fr));
     gap: 20px;
     margin: auto;
 }
@@ -131,3 +132,9 @@ main{
     font-size: 1.7em;
 }
 
+footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 5vh;
+}

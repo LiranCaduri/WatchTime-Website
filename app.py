@@ -4,18 +4,19 @@ import json
 
 # TODO - add try catch to all request
 # TODO - make 404 page design
-# TODO - fix search to match smartphones
+# TODO - fix search design to match smartphones
 # TODO - make filters by data manipulation (needed making by hand) (filters: by rating out of 10, by actress, by genre ...)
 # TODO - show text when there is no result
 # TODO - add Cast
-# TODO - use background photo for show page (http://api.tvmaze.com/shows/4/images)
+
 
 app = Flask(__name__)
 
 @app.route('/')
-def index():
+@app.route('/<int:page>')
+def index(page=0):
     #http://api.tvmaze.com/shows
-    response = requests.get('http://api.tvmaze.com/shows')
+    response = requests.get(f'http://api.tvmaze.com/shows?page={page}')
     return render_template('index.html', data= json.loads(response.content), category="all")
 
 
@@ -29,9 +30,36 @@ def search():
 
 @app.route('/show/<int:show_id>')
 def show_page(show_id):
-    response = requests.get(f'http://api.tvmaze.com/shows/{show_id}')
+    url = f'http://api.tvmaze.com/shows/{show_id}'
+    response = requests.get(url)
 
-    return render_template('show_page.html', data= json.loads(response.content))
+    images_data = requests.get(f'{url}/images')
+    images_data = json.loads(images_data.content)
+    images_reversed =(list(reversed(images_data)))
+
+    background = None
+    for img in images_reversed:
+        if img['type'] == 'background':
+            background = img
+
+    return render_template('show_page.html', data= json.loads(response.content), background=background)
+
+
+@app.route('/genre/<string:genre>/<int:page>')
+@app.route('/genre/<string:genre>')
+def genre_filter(genre, page=0):
+    response = requests.get(f'http://api.tvmaze.com/shows?page={page}')
+    data = json.loads(response.content)
+
+    filtered = []
+
+    for obj in data:
+        for g in obj['genres']:
+            if g.lower() == genre.lower():
+                filtered.append(obj)
+
+    return render_template('index.html', data=filtered , category=genre.title())
+
 
 if __name__ == '__main__':
     app.run(debug=True)

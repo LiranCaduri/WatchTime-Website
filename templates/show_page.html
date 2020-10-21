@@ -6,36 +6,27 @@
 
 {% block body %}
     <main>
-        <div class="show-info-container">
-            <header>
-                <h1 class="category-title">{{data.name}}</h1>
-            </header>
-            <section class="info-about">
-                <img src="{{data.image.original}}" id="full-size-show-image" alt="{{data.name}}">
-                <div class="text-info">
-                    <label id="genre-lable" for="genres-list">Genres</label>
-                    <ul id="genres-list" class="genres-list">
-                        {% for genre in data.genres %}
-                            <li>{{genre}}</li>
-                        {% endfor %}
-                    </ul>
-                    <dl>
-                        <dt>Premiered in</dt>
-                        <dd id="date" class="tab date">{{data.premiered | replace('-','.')}}</dd>
-                        <dt>Network</dt>
-                        <dd>{{ data.network.name }}</dd>
-                        <dt>Rating</dt>
-                        <dd>{{ data.rating.average }}</dd>
-                        <dt>Country</dt>
-                        <dd>{{ data.network.country.name }}</dd>
-                    </dl>
-                </div>
-            </section>
-            <br>
-            <section id="show-summary" class="info-about">
-                <h3 class="summary-title">Summary</h3>
-                <p id="summary">{{ data.summary | safe }}</p>
-            </section>
+        <img 
+            id="background"
+            class="background-thumbnail" 
+            src="{{ background.resolutions.original.url }}" 
+            alt="{{data.name}}"
+        >
+        
+        <div class="container">
+            <h1>{{data.name}}</h1>
+            <h3>Premiered: {{ data.premiered | replace('-', '.') }}</h3>
+            <h3>Network: {{ data.network.name }}</h3>
+            <h3>Language: {{ data.language }}</h3>
+            <div id="genre-list">
+                <h3>Genres</h3>
+                <h4>
+                    {% for g in data.genres %}
+                    {{g}}  
+                    {% endfor %}
+                </h4>
+
+            </div>
         </div>
     </main>
 {% endblock %}
