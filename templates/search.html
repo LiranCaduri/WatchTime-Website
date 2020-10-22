@@ -11,6 +11,7 @@
         </header>
 
         <section class="results-container">
+            {% if data %}
             {% for obj in data %}
             {#{ url_for('.show_page', show_id=obj.show.externals.thetvdb) }#}
                 <a id="result-card" href="/show/{{obj.show.id}}" class="card-ref card">
@@ -26,6 +27,11 @@
                     </div>
                 </a>
             {% endfor %}
+            {% else %}
+                <div class="no-result">
+                    <h1>No result on this time 🤔, Try Searching for somthing else.</h1>
+                </div>
+            {% endif %}
         </section>
     </main>
 {% endblock %}

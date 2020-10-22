@@ -18,19 +18,14 @@ genres_list = [
         "Adventure",
         "History",
         "Thriller",
-        "Animation",
+        "Anime",
         "Family",
         "Mystery",
-        "Biography",
         "Action",
-        "Film-Noir",
         "Romance",
-        "Sci-Fi",
         "War",
         "Western",
         "Horror",
-        "Musical",
-        "Sport"
     ]
 
 app = Flask(__name__)
@@ -56,7 +51,7 @@ def search():
     try:
         response = requests.get(f'http://api.tvmaze.com/search/shows?q={result}')
     except:
-        #frontend will print out or show 404 page
+        #frontend will print out
         data = None
     else:
         data= json.loads(response.content)

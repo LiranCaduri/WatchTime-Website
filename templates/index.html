@@ -22,6 +22,7 @@
         </div>
     </header>
     
+    {% if data %}
     <div class="container-grid">
         {% for obj in data%}
             <a id="card-ref" href="{{ url_for('show_page', show_id=obj.id) }}" class="card-ref">
@@ -41,6 +42,11 @@
             </a>
         {% endfor %}
     </div>
+    {% else %}
+        <div class="no-result">
+            <h1>No result on this page 🤔, move to the next.</h1>
+        </div>
+    {% endif %}
 </main>
 
 {% block footer %}
