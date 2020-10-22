@@ -5,28 +5,52 @@
 {% endblock %}
 
 {% block body %}
+{% if background %}
+    <img 
+        id="background"
+        class="background-thumbnail" 
+        src="{{ background.resolutions.original.url }}" 
+        alt="{{data.name}}"
+    >
+    {% else %}
+    <img 
+        id="background"
+        class="background-thumbnail" 
+        src="{{ url_for('static', filename='assets/show-placeholder.jpg') }}" 
+        alt="placeholder"
+    >
+    {% endif %}
     <main>
-        <img 
-            id="background"
-            class="background-thumbnail" 
-            src="{{ background.resolutions.original.url }}" 
-            alt="{{data.name}}"
-        >
-        
-        <div class="container">
+        <section class="container">
             <h1>{{data.name}}</h1>
             <h3>Premiered: {{ data.premiered | replace('-', '.') }}</h3>
             <h3>Network: {{ data.network.name }}</h3>
             <h3>Language: {{ data.language }}</h3>
             <div id="genre-list">
-                <h3>Genres</h3>
-                <h4>
+                <h3>Genres:</h3>
+                <ul>
                     {% for g in data.genres %}
-                    {{g}}  
+                    <h4>{{g}}</h4>
                     {% endfor %}
-                </h4>
-
+                </ul>
             </div>
-        </div>
+            <div class="summary">
+                <h1 class=".container">Summery</h1>
+                <p>{{data.summary | safe}}</p>
+            </div>
+        </section>
+
+        <section class="container cast">
+            <div class="container-grid">
+                {% for p in data._embedded.cast %}
+                <div class="card">
+                    <img id="thumbnail" src="{{p.person.image.medium}}" >
+                    <div class="card-data">
+                        <h1>{{p.person.name}}</h1>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
     </main>
 {% endblock %}

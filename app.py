@@ -2,13 +2,6 @@ from flask import Flask, render_template, request, redirect, url_for
 import requests
 import json
 
-# TODO - fix search design to match smartphones
-# TODO - make filters by data manipulation (filters: by rating out of 10, by actress)
-# TODO - show text when there is no result
-# TODO - add Cast
-# TODO - implement figur 
-# TODO - consider where to redirect to 404
-
 genres_list = [
         "Comedy",
         "Fantasy",
@@ -26,6 +19,7 @@ genres_list = [
         "War",
         "Western",
         "Horror",
+        "Supernatural"
     ]
 
 app = Flask(__name__)
@@ -64,7 +58,7 @@ def show_page(show_id):
     url = f'http://api.tvmaze.com/shows/{show_id}'
 
     try:
-        response = requests.get(url)
+        response = requests.get(f'{url}?embed[]=cast')
         images_data = requests.get(f'{url}/images')
     except:
         data = None
@@ -85,7 +79,6 @@ def show_page(show_id):
 
 
 @app.route('/genre/<string:genre>/<int:page>')
-@app.route('/genre/<string:genre>')
 def genre_filter(genre, page=0):
     if genre.lower() == 'all':
         return redirect(url_for('index'))
@@ -105,6 +98,7 @@ def genre_filter(genre, page=0):
 
     return render_template('genreFooterComponent.html', data=filtered , category=genre.title(),genre=genre, genres=genres_list, page=page)
 
+@app.errorhandler(500)
 @app.errorhandler(404)
 def not_found():
     return render_template('404page.html'), 404

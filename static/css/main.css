@@ -7,6 +7,10 @@ html {
     /* color: white; */
     font-family: 'Roboto', sans-serif;
     scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    width: 100% !important;
+    height: 100% !important;
 }
 
 body{
