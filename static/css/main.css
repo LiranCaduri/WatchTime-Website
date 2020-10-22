@@ -136,7 +136,19 @@ footer{
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: row-reverse;
     height: 5vh;
+}
+
+footer h1{
+    font-size: 5em;
+    color: white;
+    font-weight: 200;
+}
+
+svg{
+    font-size: 4em; 
+    margin: 1.5rem;
 }
 
 header{

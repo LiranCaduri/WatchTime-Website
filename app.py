@@ -46,7 +46,7 @@ def index(page=0):
         data = None
     else:
         data= json.loads(response.content)
-    return render_template('index.html', data=data, category="all", genres=genres_list)
+    return render_template('index.html', data=data, category="all", genres=genres_list, page=page)
 
 
 @app.route('/search', methods = ['POST'])
@@ -92,7 +92,6 @@ def show_page(show_id):
 @app.route('/genre/<string:genre>/<int:page>')
 @app.route('/genre/<string:genre>')
 def genre_filter(genre, page=0):
-    
     if genre.lower() == 'all':
         return redirect(url_for('index'))
     try:
@@ -103,19 +102,17 @@ def genre_filter(genre, page=0):
         data = json.loads(response.content)
 
     filtered = []
-
     if data:
         for obj in data:
             for g in obj['genres']:
                 if g.lower() == genre.lower():
                     filtered.append(obj)
 
-    return render_template('index.html', data=filtered , category=genre.title(), genres=genres_list)
+    return render_template('genreFooterComponent.html', data=filtered , category=genre.title(),genre=genre, genres=genres_list, page=page)
 
-
-@app.route('/404')
+@app.errorhandler(404)
 def not_found():
-    return render_template('404page.html')
+    return render_template('404page.html'), 404
 
 
 if __name__ == '__main__':
