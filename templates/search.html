@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 
 {% block head %} 
-    <link rel="stylesheet" href={{ url_for('static',filename="css/search.css") }} />
 {% endblock %}
 
 {% block body %} 
@@ -12,21 +11,19 @@
 
         <section class="results-container">
             {% if data %}
-            {% for obj in data %}
-            {#{ url_for('.show_page', show_id=obj.show.externals.thetvdb) }#}
-                <a id="result-card" href="/show/{{obj.show.id}}" class="card-ref card">
-                    {% if obj.show.image.medium %}
-                        <img src={{obj.show.image.medium}} id="thumbnail" class="thumbnail" alt="{{obj.show.name}}">
-                    {% else %}
-                        <!-- <img src="{{ url_for('static', filename='assets/Placeholder.png') }}" id="thumbnail" class="thumbnail" alt="placeholder"> -->
-                    {% endif %}
-                    <div class="card-data result-card">
-                        <h1 class="result-show-name">{{obj.show.name}}</h1>
-                        <h2 class="result-date">Premiered in: {{obj.show.premiered | replace('-','.')}}</h2>
-                        
-                    </div>
-                </a>
-            {% endfor %}
+                {% for obj in data %}
+                    <a id="result-card" href="/show/{{obj.show.id}}" class="card-ref card">
+                        {% if obj.show.image.medium %}
+                            <img src={{obj.show.image.medium}} class="thumbnail" alt="{{obj.show.name}}">
+                        {% else %}
+                            <img src="{{ url_for('static', filename='assets/Placeholder.png') }}" class="thumbnail" alt="placeholder">
+                        {% endif %}
+                        <div class="card-data result-card">
+                            <h1 class="result-show-name">{{obj.show.name}}</h1>
+                            <h2 class="result-date">Premiered in: {{obj.show.premiered | replace('-','.')}}</h2> 
+                        </div>
+                    </a>
+                {% endfor %}
             {% else %}
                 <div class="no-result">
                     <h1>No result on this time 🤔, Try Searching for somthing else.</h1>

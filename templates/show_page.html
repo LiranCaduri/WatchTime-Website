@@ -14,7 +14,7 @@
     >
     {% else %}
     <img 
-        id="background"
+        id="placeholder"
         class="background-thumbnail" 
         src="{{ url_for('static', filename='assets/show-placeholder.jpg') }}" 
         alt="placeholder"
@@ -28,11 +28,11 @@
             <h3>Language: {{ data.language }}</h3>
             <div id="genre-list">
                 <h3>Genres:</h3>
-                <ul>
+                <div class="genres">
                     {% for g in data.genres %}
                     <h4>{{g}}</h4>
                     {% endfor %}
-                </ul>
+                </div>
             </div>
             <div class="summary">
                 <h1 class=".container">Summery</h1>
@@ -46,9 +46,9 @@
                 {% for p in data._embedded.cast %}
                 <div class="card">
                     {% if p.person.image.medium %}
-                    <img id="thumbnail" src="{{p.person.image.medium}}" >
+                    <img class="thumbnail" src="{{p.person.image.medium}}" >
                     {% else %}
-                    <img id="thumbnail" style="width: 24rem; height: 31rem;" src="{{url_for('static', filename='assets/profile-placeholder.jpg')}}" >
+                    <img class="thumbnail" style="width: 24rem; height: 31rem;" src="{{url_for('static', filename='assets/profile-placeholder.jpg')}}" >
                     {% endif %}
                     <div class="card-data">
                         <h1>{{p.person.name}}</h1>

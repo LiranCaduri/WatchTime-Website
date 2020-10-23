@@ -100,7 +100,7 @@ main{
     box-shadow: 10px 10px 10px #323232;
 }
 
-#thumbnail{
+.thumbnail{
     border-radius: 20px;
     padding: 10px;
 }
@@ -115,7 +115,7 @@ main{
     color: goldenrod;
 }
 
-#stars-container{
+.stars-container{
     justify-content: center;
 }
 
@@ -158,10 +158,9 @@ svg{
 header{
     display: flex;
     align-items: center;
-    justify-content: safe;
 }
 
-#dropdownMenuButton{
+.dropdownMenuButton{
     /* bootstarp override */
     font-size: 1.5em !important;
     background-color: #656565;

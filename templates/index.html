@@ -1,80 +1,77 @@
 {% extends 'base.html' %}
 
-
 {% block head %} 
-    <!-- <link rel="stylesheet" href={{ url_for('static',filename="css/index.css") }} /> -->
 {% endblock %}
-
 
 {% block body %}
-<main class="main">
-    <header>
-        <h1 class="category-title">{{ category | title }}</h1>
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Genres List
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                {% for genre in genres %}
-                <a class="dropdown-item" href="{{ url_for('genre_filter',genre=genre, page=0) }}">{{ genre }}</a>
-                {% endfor %}
-            </div>
-        </div>
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Rating
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                {% for i in range(0,11) %}
-                <a class="dropdown-item" href="{{ url_for('rating_filter',rating=i, page=0) }}">{{ i }}</a>
-                {% endfor %}
-            </div>
-        </div>
-    </header>
-    
-    {% if data %}
-    <div class="container-grid">
-        {% for obj in data%}
-            <a id="card-ref" href="{{ url_for('show_page', show_id=obj.id) }}" class="card-ref">
-                <img src={{obj.image.medium}} id="thumbnail" class="thumbnail" alt="{{obj.name}}">
-                <div class="card-data">
-                    <h1 class="show-name">{{obj.name}}</h1>
-                
-                    <div id="stars-container">
-                        {% for i in range( obj.rating.average |int // 2 ) %}
-                            <span class="fa fa-star checked star"></span>    
-                        {% endfor %}
-                        {% for i in range(5 - (obj.rating.average |int // 2) ) %}
-                            <span class="fa fa-star"></span>    
-                        {% endfor %}
-                    </div>
+    <main class="main">
+        <header>
+            <h1 class="category-title">{{ category | title }}</h1>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdownMenuButton dropdown-toggle" type="button" id="dropdownMenuButtonGenres" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Genres List
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    {% for genre in genres %}
+                    <a class="dropdown-item" href="{{ url_for('genre_filter',genre=genre, page=0) }}">{{ genre }}</a>
+                    {% endfor %}
                 </div>
-            </a>
-        {% endfor %}
-    </div>
-    {% else %}
-        <div class="no-result">
-            <h1>No result on this page 🤔, move to the next.</h1>
+            </div>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdownMenuButton dropdown-toggle" type="button" id="dropdownMenuButtonRating" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Rating
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    {% for i in range(0,11) %}
+                    <a class="dropdown-item" href="{{ url_for('rating_filter',rating=i, page=0) }}">{{ i }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </header>
+        
+        {% if data %}
+        <div class="container-grid">
+            {% for obj in data%}
+                <a href="{{ url_for('show_page', show_id=obj.id) }}" class="card-ref">
+                    <img src={{obj.image.medium}} class="thumbnail" alt="{{obj.name}}">
+                    <div class="card-data">
+                        <h1 class="show-name">{{obj.name}}</h1>
+                    
+                        <div class="stars-container">
+                            {% for i in range( obj.rating.average |int // 2 ) %}
+                                <span class="fa fa-star checked star"></span>    
+                            {% endfor %}
+                            {% for i in range(5 - (obj.rating.average |int // 2) ) %}
+                                <span class="fa fa-star"></span>    
+                            {% endfor %}
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
         </div>
-    {% endif %}
-</main>
+        {% else %}
+            <div class="no-result">
+                <h1>No result on this page 🤔, move to the next.</h1>
+            </div>
+        {% endif %}
+    </main>
 
-{% block footer %}
-<footer>
-    <a href="{{ url_for(request.endpoint, page=page+1) }}">
-        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-bar-right next-arrow" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M6 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L12.293 7.5H6.5A.5.5 0 0 0 6 8zm-2.5 7a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5z"/>
-        </svg>
-    </a>
-    <h1>{{page}}</h1>
-    {% if page - 1 != -1 %}
-    <a href="{{ url_for(request.endpoint, page=page-1) }}" >
-        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-bar-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M12.5 15a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5zM10 8a.5.5 0 0 1-.5.5H3.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L3.707 7.5H9.5a.5.5 0 0 1 .5.5z"/>
-        </svg>
-    </a>
-    {% endif %}
-</footer>
-{% endblock %}
+    {% block footer %}
+    <footer>
+        <a href="{{ url_for(request.endpoint, page=page+1) }}">
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-bar-right next-arrow" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M6 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L12.293 7.5H6.5A.5.5 0 0 0 6 8zm-2.5 7a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5z"/>
+            </svg>
+        </a>
+        <h1>{{page}}</h1>
+        {% if page - 1 != -1 %}
+        <a href="{{ url_for(request.endpoint, page=page-1) }}" >
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-bar-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M12.5 15a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5zM10 8a.5.5 0 0 1-.5.5H3.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L3.707 7.5H9.5a.5.5 0 0 1 .5.5z"/>
+            </svg>
+        </a>
+        {% endif %}
+    </footer>
+    {% endblock %}
 
 {% endblock %}
