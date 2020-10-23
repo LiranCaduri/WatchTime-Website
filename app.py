@@ -98,6 +98,32 @@ def genre_filter(genre, page=0):
 
     return render_template('genreFooterComponent.html', data=filtered , category=genre.title(),genre=genre, genres=genres_list, page=page)
 
+@app.route('/<int:rating>/<int:page>')
+def rating_filter(rating, page):
+    try:
+        response = requests.get(f'http://api.tvmaze.com/shows?page={page}')
+    except:
+        data= None
+    else:
+        data = json.loads(response.content)
+
+    filtered = []
+    if data:
+        for obj in data:
+            r = obj['rating']['average']
+            if rating == 0:
+                if r is None:
+                    filtered.append(obj)
+            else:
+                if not(r is None):
+                    if rating >= r < rating + 1:
+                        filtered.append(obj)
+                
+
+    
+    return render_template('raitingFooterComponent.html', data=filtered, rating=rating, category=f"rating {rating}", page=page)
+
+
 @app.errorhandler(500)
 @app.errorhandler(404)
 def not_found():

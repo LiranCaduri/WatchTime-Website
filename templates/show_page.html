@@ -45,7 +45,11 @@
             <div class="container-grid">
                 {% for p in data._embedded.cast %}
                 <div class="card">
+                    {% if p.person.image.medium %}
                     <img id="thumbnail" src="{{p.person.image.medium}}" >
+                    {% else %}
+                    <img id="thumbnail" style="width: 24rem; height: 31rem;" src="{{url_for('static', filename='assets/profile-placeholder.jpg')}}" >
+                    {% endif %}
                     <div class="card-data">
                         <h1>{{p.person.name}}</h1>
                     </div>
