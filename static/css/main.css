@@ -4,7 +4,6 @@
 html {
     font-size: 10px;
     background-color: #323232 !important;
-    /* color: white; */
     font-family: 'Roboto', sans-serif;
     scroll-behavior: smooth;
     margin: 0;
@@ -122,10 +121,12 @@ main{
 .results-container{
     display: flex;
     flex-direction: column;
+    width: fit-content;
+    margin: auto;
 }
 
-#result-card{
-    margin: 2rem;
+.result-card{
+    margin: 1rem;    
 }
 
 .result-card h1{
