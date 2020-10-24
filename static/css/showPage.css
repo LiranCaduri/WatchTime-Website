@@ -56,7 +56,7 @@ p{
 
 .cast{
     margin-top: 2rem;
-    opacity: 100% !important;
+    opacity: 100%;
     background: linear-gradient(to bottom, gold, goldenrod, goldenrod);
 }
 
@@ -78,7 +78,7 @@ p{
         font-size: 1.5em;
     }
     .container-grid{
-        grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(33rem, 1fr));
     }
     .thumbnail{
         height: 29rem;
@@ -95,7 +95,7 @@ p{
         font-size: 1.5em;
     }
     .container-grid{
-        grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(33rem, 1fr));
     }
     .thumbnail{
         height: 29rem;
@@ -112,7 +112,7 @@ p{
         font-size: 2em;
     }
     .container-grid{
-        grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(33rem, 1fr));
     }
 }
 
@@ -122,6 +122,6 @@ p{
         width: 100%;
     }
     .container-grid{
-        grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(33rem, 1fr));
     }
 } 

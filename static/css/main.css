@@ -1,20 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap');
 
+/* Note: i must use !important to override bootstarp styling. */
+
 html {
     font-size: 10px;
-    background-color: #323232 !important;
+    background-color: #323232;
     font-family: 'Roboto', sans-serif;
     scroll-behavior: smooth;
     margin: 0;
     padding: 0;
-    width: 100% !important;
-    height: 100% !important;
 }
 
 body{
     margin: 0;
-    background-color: #323232 !important;
+    background-color: #323232 ; /* bootstarp override */
 }
 
 nav{
@@ -27,7 +27,7 @@ nav{
     align-items: center;
     justify-content: space-around;
     background-color: #343434;
-    box-shadow: 0px 0px 4px black;
+    box-shadow: 0rem 0rem 0.4rem black;
     z-index: 1;
     margin-bottom: 2rem;
 }
@@ -36,34 +36,40 @@ nav h2{
     font-size: 2em;
     letter-spacing: 0.02em;
     padding: 0.5rem;
+    margin: 0;
 }
 
 a{
-    color: white !important;
-    text-decoration: none !important;
+    /* must have !important here to override bootstrap */
+    color: white !important; /* bootstarp override */
+    text-decoration: none !important; /* bootstarp override */
 }
 
 .searchBar{
     display: flex;
     flex-direction: row;
-    margin: 15px 0px;  
-    width: 30vw; 
+    margin: 1.5rem 0rem;  
+    width: 35rem; 
+    font-family: FontAwesome, Roboto, sans-serif;
 }
 
 .searchBar input{
     color: white;
     background-color: #505050;
     border: none;
-    font-family: FontAwesome, Roboto, sans-serif;
     width: 100%;
-    border-radius: 5px;
+    border-radius: 0.5rem;
     font-size: 1.5em;
-    padding: 5px;
-    flex: 1;
+    padding: 0.5rem;
 }
 
 .searchBar input::placeholder{
-    color: #323232;
+    color: #222222;
+}
+
+.submit-button{
+    flex: 2;
+    margin-left: 0.5rem;
 }
 
 main{
@@ -76,8 +82,8 @@ main{
     font-size: 3rem;
     font-family: 'Oswald', sans-serif;
     letter-spacing: 0.05em;
-    padding: 3rem 0px;
-    margin: 0px 4rem;
+    padding: 3rem 0rem;
+    margin: 0rem 4rem;
 }
 
 
@@ -85,23 +91,22 @@ main{
     display: grid;
     align-items: center;
     grid-template-columns: repeat(auto-fit, minmax(355px, 1fr));
-    gap: 20px;
+    gap: 2rem;
     margin: auto;
 }
 
-.card, .card-ref, a [id="card-ref"]{
+.card, .card-ref{
     display: flex;
     flex-direction: row;
     background-color: #656565;   
-    border-radius: 20px;
-    text-decoration: none !important;
-    color: white !important;
-    box-shadow: 10px 10px 10px #323232;
+    border-radius: 2rem;
+    text-decoration: none !important; /* bootstarp override */
+    color: white !important; /* bootstarp override */
 }
 
 .thumbnail{
-    border-radius: 20px;
-    padding: 10px;
+    border-radius: 2rem;
+    padding: 1rem;
 }
 
 .card-data{
@@ -162,20 +167,18 @@ header{
 }
 
 .dropdownMenuButton{
-    /* bootstarp override */
-    font-size: 1.5em !important;
+    font-size: 1.5em ; /* bootstarp override */
     background-color: #656565;
     margin-right: 1rem;
 }
 
 .dropdown-menu{
-    /* bootstarp override */
-    background-color: #424242 !important;
-    font-size: 2em !important;
+    background-color: #424242; /* bootstarp override */
+    font-size: 2em; /* bootstarp override */
 }
 
 .dropdown-item:hover{
-    background-color: #232323 !important;
+    background-color: #232323; /* bootstarp override */
 }
 
 .no-result{
@@ -186,4 +189,19 @@ header{
     padding: 1rem;
     border-radius: 2rem;
     color: white;
+}
+
+
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 575.98px) { 
+    .searchBar{
+        width: 20rem;
+    }
+}
+
+/* // Medium devices (tablets, 768px and up) */
+@media (max-width: 767.98px){
+    .searchBar{
+        width: 20rem;
+    }
 }
