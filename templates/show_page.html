@@ -43,15 +43,15 @@
         <section class="container cast">
             <h1>Cast</h1>
             <div class="container-grid">
-                {% for p in data._embedded.cast %}
+                {% for name, image in cast %}
                 <div class="card-ref card">
-                    {% if p.person.image.medium %}
-                    <img class="thumbnail" src="{{p.person.image.medium}}" alt="{{p.person.name}}" >
+                    {% if image %}
+                    <img class="thumbnail" src="{{ image }}" alt="{{ name }}">
                     {% else %}
                     <img class="thumbnail" style="width: 24rem; height: 31rem;" src="{{url_for('static', filename='assets/profile-placeholder.jpg')}}" alt="placeholder" >
                     {% endif %}
                     <div class="card-data">
-                        <h1>{{p.person.name}}</h1>
+                        <h1>{{ name }}</h1>
                     </div>
                 </div>
                 {% endfor %}

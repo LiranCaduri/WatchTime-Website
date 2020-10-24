@@ -69,13 +69,16 @@ def show_page(show_id):
         images_reversed =(list(reversed(images_data)))
 
     background = None
-
     if images_reversed:
         for img in images_reversed:
             if img['type'] == 'background':
                 background = img
 
-    return render_template('show_page.html', data=data, background=background)
+    actors_without_duplicates = set()
+    for obj in data['_embedded']['cast']:
+        actors_without_duplicates.add((obj["person"]["name"], obj["person"]["image"]["medium"]))
+
+    return render_template('show_page.html', data=data, cast=list(actors_without_duplicates), background=background)
 
 
 @app.route('/genre/<string:genre>/<int:page>')
@@ -114,10 +117,9 @@ def rating_filter(rating, page):
             if rating == 0:
                 if r is None:
                     filtered.append(obj)
-            else:
-                if not(r is None):
-                    if rating >= r < rating + 1:
-                        filtered.append(obj)
+            if not(r is None):
+                if rating >= r < rating + 1:
+                    filtered.append(obj)
                 
 
     
@@ -127,7 +129,7 @@ def rating_filter(rating, page):
 @app.errorhandler(500)
 @app.errorhandler(404)
 def not_found():
-    return render_template('404page.html'), 404
+    return render_template('404page.html')
 
 
 if __name__ == '__main__':
