@@ -1,6 +1,12 @@
-from flask import Flask, render_template, request, redirect, url_for, abort
 import requests
 import json
+from flask import abort, Flask, render_template, request, redirect, url_for
+
+# Created by: Liran Caduri
+# At: liran.c.caduri@gmail.com
+# GitHub: https://github.com/LiranCaduri
+
+app = Flask(__name__)
 
 genres_list = [
         "All",
@@ -22,8 +28,6 @@ genres_list = [
         "Horror",
         "Supernatural"
     ]
-
-app = Flask(__name__)
 
 @app.route('/')
 @app.route('/<int:page>')
@@ -129,6 +133,7 @@ def rating_filter(rating, page):
 def not_found(e):
     print(e)
     return render_template('404page.html'), 404
+
 
 if __name__ == '__main__':
     app.run()
