@@ -27,7 +27,6 @@ app = Flask(__name__)
 @app.route('/')
 @app.route('/<int:page>')
 def index(page=0):
-
     try:
         response = requests.get(f'http://api.tvmaze.com/shows?page={page}')
     except:
@@ -126,11 +125,10 @@ def rating_filter(rating, page):
     return render_template('raitingFooterComponent.html', data=filtered, rating=rating, category=f"rating {rating}", page=page)
 
 
-@app.errorhandler(500)
 @app.errorhandler(404)
-def not_found():
-    return render_template('404page.html')
+def not_found(e):
+    return render_template('404page.html'), 404
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='192.168.1.6')
+    app.run()
